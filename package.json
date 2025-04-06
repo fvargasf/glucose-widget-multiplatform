@@ -2,26 +2,41 @@
   "name": "glucose-widget",
   "version": "0.1.0",
   "private": true,
+  "main": "main/main.js",
+  "author": "fvargas",
+  "description": "Desktop glucose widget for freestyle libre data",
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "concurrently -n \"NEXT,ELECTRON\" -c \"yellow,blue\" --kill-others \"next dev --turbopack\" \"electron .\"",
+    "build": "next build && electron-builder",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/chart.js": "^2.9.41",
+    "@types/js-cookie": "^3.0.6",
+    "axios": "^1.8.4",
+    "chart.js": "^4.4.8",
+    "chartjs-plugin-zoom": "^2.2.0",
+    "electron-serve": "^2.1.1",
+    "js-cookie": "^3.0.5",
+    "next": "15.2.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.2.4"
+    "recharts": "^2.15.2"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4",
+    "concurrently": "^9.1.2",
+    "electron": "^35.1.4",
+    "electron-builder": "^26.0.12",
+    "electron-is-dev": "^3.0.1",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-    "@eslint/eslintrc": "^3"
+    "tailwindcss": "^4",
+    "typescript": "^5"
   }
 }

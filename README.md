@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Glucose Widget
 
-## Getting Started
+A desktop application that displays a real-time graph of glucose levels using LibreView data.
 
-First, run the development server:
+## Features
 
+- Real-time glucose level visualization
+- Automatic updates every 60 seconds
+- Visual indicators for high and low levels
+- Customizable target range
+- Clean and minimalistic interface
+- Data persistence between sessions
+- Dark mode by default
+
+## Technologies Used
+
+- Electron for the desktop application
+- Next.js for the frontend
+- Chart.js for graph visualization
+- LibreView API for glucose data
+
+## Requirements
+
+- Node.js 18 or higher
+- npm 9 or higher
+- LibreView account with API access
+
+## Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [REPOSITORY_URL]
+cd glucose-widget
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Configure environment variables:
+Create a `.env.local` file in the project root with:
+```
+NEXT_PUBLIC_API_URL=https://api.libreview.io
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Development
 
-## Learn More
+To run the application in development mode:
+```bash
+npm run electron:dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+This will start:
+- Next.js development server
+- Electron application
+- Development tools
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+To build the application:
+```bash
+npm run build
+npm run electron:build
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+glucose-widget/
+├── electron/           # Electron configuration
+├── src/               # Next.js source code
+│   ├── app/          # Components and pages
+│   ├── api/          # API routes
+│   └── styles/       # Global styles
+├── public/           # Static files
+└── package.json      # Dependencies and scripts
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Security
+
+- The application uses localStorage to store authentication data
+- Content Security Policy (CSP) is implemented to protect against XSS attacks
+- Credentials are handled securely and are not stored in plain text
+
+## License
+
+MIT
